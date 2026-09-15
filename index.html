@@ -6,6 +6,7 @@
 <title>Ahamed Nawaz — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 :root{
   --bg:#050609;
@@ -164,13 +165,14 @@ nav{
   display:flex;justify-content:center;
 }
 .photo-card{
-  position:relative;width:320px;height:400px;
+  position:relative;width:320px;height:320px;
   transform-style:preserve-3d;
   transition:transform .12s ease-out;
-  border-radius:22px;
+  border-radius:50%;
+  animation:photoFloat 7s ease-in-out infinite;
 }
 .photo-frame{
-  position:absolute;inset:0;border-radius:22px;overflow:hidden;
+  position:absolute;inset:0;border-radius:50%;overflow:hidden;
   border:1px solid var(--border);
   background:var(--bg-elev);
   transform:translateZ(20px);
@@ -183,14 +185,18 @@ nav{
   mix-blend-mode:screen;
 }
 .ring{
-  position:absolute;inset:-18px;border-radius:30px;
+  position:absolute;inset:-18px;border-radius:50%;
   border:1px solid rgba(79,143,255,0.35);
   transform:translateZ(-10px);
 }
 .ring2{
-  position:absolute;inset:-38px;border-radius:38px;
+  position:absolute;inset:-38px;border-radius:50%;
   border:1px dashed rgba(34,211,238,0.22);
   transform:translateZ(-40px);
+}
+@keyframes photoFloat{
+  0%,100%{transform:rotateY(-7deg) rotateX(3deg) translateY(0);}
+  50%{transform:rotateY(7deg) rotateX(-3deg) translateY(-10px);}
 }
 .badge{
   position:absolute;
@@ -296,7 +302,7 @@ nav{
 .list-card li::before{
   content:'';position:absolute;left:0;top:7px;width:8px;height:1px;background:var(--accent);
 }
-.lang-row{display:flex;gap:14px;margin-top:6px;}
+.lang-row{grid-column:1 / -1;display:flex;gap:14px;width:min(100%,420px);margin:20px auto 0;}
 .lang-pill{border:1px solid var(--border);border-radius:10px;padding:14px 20px;font-size:14px;text-align:center;flex:1;background:rgba(255,255,255,0.02);}
 .lang-pill .lv{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);margin-top:4px;}
 
@@ -306,13 +312,13 @@ nav{
 .contact-section p{color:var(--muted);max-width:480px;margin:0 auto 36px;font-size:15.5px;line-height:1.7;}
 .contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:10px;}
 .clink{
-  border:1px solid var(--border);border-radius:12px;padding:16px 20px;font-size:13.5px;min-width:200px;
-  display:flex;flex-direction:column;gap:4px;text-align:left;
+  width:54px;height:54px;border:1px solid var(--border);border-radius:50%;font-size:19px;
+  display:inline-flex;align-items:center;justify-content:center;color:var(--muted);
   transition:transform .3s ease, border-color .3s ease, background .3s ease;
   background:var(--surface);
 }
 .clink:hover{transform:translateY(-4px);border-color:var(--accent2);background:var(--surface-strong);}
-.clink .clabel{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--accent2);text-transform:uppercase;letter-spacing:.06em;}
+.clink i{font-size:20px;}
 footer{
   text-align:center;padding:40px 32px 60px;color:var(--muted);font-size:12.5px;
   font-family:'JetBrains Mono',monospace;
@@ -394,7 +400,7 @@ footer{
         Currently pursuing a <strong>Bachelor of Engineering in Computer Science and Engineering</strong> at Dhaanish Ahmed Institute of Technology, Coimbatore. My focus so far has been on <strong>Java</strong> for problem-solving and logic building, alongside the front-end fundamentals of <strong>HTML and CSS</strong>. Outside coursework, I've taken that logic into two hackathon builds — a waste management interface and a women-safety analytics concept — and I'm looking for opportunities to keep sharpening these skills on real teams.
       </p>
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Hackathon Projects</div></div>
+        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Projects</div></div>
         <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Core Technical Skills</div></div>
         <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Languages Spoken</div></div>
         <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Oracle Certification</div></div>
@@ -466,16 +472,19 @@ footer{
       <p>Two rapid-build projects tackling real-world problems under time pressure.</p>
     </div>
     <div class="projects-grid">
-      <div class="project-card tilt">
-        <span class="project-tag">Hackathon · HTML</span>
-        <h3>Real-time Waste Management</h3>
-        <p>A real-life waste management solution built for a hackathon. Designed a web interface to collect, store, and organize waste data — supporting efficient, ongoing monitoring.</p>
-      </div>
-      <div class="project-card tilt">
-        <span class="project-tag">Hackathon · Analytics</span>
-        <h3>Women Safety Analytics</h3>
-        <p>An analytics-based safety system that classifies locations as safe, mid-safe, or danger using location and device-movement analysis — detecting risk levels to support preventive safety measures.</p>
-      </div>
+      <a class="project-card tilt" href="https://project-smoky-nu-10.vercel.app" target="_blank" rel="noopener" aria-label="Open BLOGNEST project">
+        <span class="project-tag">PROJECT 1</span>
+        <h3>BLOGNEST</h3>
+        <p>BlogNest is a modern blogging platform where users can create, edit, and share engaging blog posts.
+Built as a full-stack project, BlogNest demonstrates real-world web development and database integration.
+</p>
+      </a>
+      <a class="project-card tilt" href="https://easytask-jjf0-production.up.railway.app/" target="_blank" rel="noopener" aria-label="Open EASYTASK project">
+        <span class="project-tag">PROJECT 2</span>
+        <h3>EASYTASK</h3>
+        <p> EasyTask is a simple and efficient task management platform for creating, organizing, and tracking daily tasks.
+It helps users manage priorities, monitor progress, and stay productive with an easy-to-use interface.</p>
+      </a>
     </div>
   </section>
 
@@ -488,7 +497,7 @@ footer{
       <div class="list-card">
         <h3>Achievements</h3>
         <ul>
-          <li>Participated in college-level technical events and coding competitions.</li>
+          <li>Got a internship offer letter from thiranex.</li>
           <li>Maintained good academic performance in computer science subjects.</li>
         </ul>
       </div>
@@ -498,11 +507,11 @@ footer{
           <li>Oracle Certified Foundations Associate.</li>
           <li>Participation certificates in PPT presentations.</li>
         </ul>
-        <div class="lang-row">
+        </div>
+         <div class="lang-row">
           <div class="lang-pill">Tamil<span class="lv">Language</span></div>
           <div class="lang-pill">English<span class="lv">Language</span></div>
         </div>
-      </div>
     </div>
   </section>
 
@@ -511,11 +520,11 @@ footer{
     <h2>Let's build something.</h2>
     <p>Open to junior developer and software engineering opportunities. Reach out — I reply quickly.</p>
     <div class="contact-links">
-      <a class="clink" href="mailto:ahamednawaz44@gmail.com"><span class="clabel">Email</span>ahamednawaz44@gmail.com</a>
-      <a class="clink" href="tel:+918695680701"><span class="clabel">Phone</span>+91 86956 80701</a>
-      <a class="clink" href="https://linkedin.com/in/ahamed-nawaz-4b1a70275" target="_blank" rel="noopener"><span class="clabel">LinkedIn</span>ahamed-nawaz-4b1a70275</a>
-      <a class="clink" href="https://github.com/nawaz46a" target="_blank" rel="noopener"><span class="clabel">GitHub</span>github.com/nawaz46a</a>
-      <a class="clink" href="#top"><span class="clabel">Location</span>Coimbatore, Tamil Nadu, India</a>
+      <a class="clink" href="mailto:ahamednawaz44@gmail.com" aria-label="Email" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+      <a class="clink" href="tel:+918695680701" aria-label="Phone" title="Phone"><i class="fa-solid fa-phone" aria-hidden="true"></i></a>
+      <a class="clink" href="https://linkedin.com/in/ahamed-nawaz-4b1a70275" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+      <a class="clink" href="https://github.com/nawaz46a" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+      <span class="clink" title="Coimbatore, Tamil Nadu, India" aria-label="Location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
     </div>
   </section>
 
@@ -545,13 +554,19 @@ document.querySelectorAll('a,.chip,.project-card,.stat-card,.skill-panel,.clink'
 
 /* ---------------- 3D tilt: hero photo + project cards ---------------- */
 function attachTilt(el, strength){
+  el.addEventListener('mouseenter', ()=>{
+    if(el.id === 'photoCard') el.style.animationPlayState='paused';
+  });
   el.addEventListener('mousemove', e=>{
     const r = el.getBoundingClientRect();
     const px = (e.clientX - r.left)/r.width - 0.5;
     const py = (e.clientY - r.top)/r.height - 0.5;
     el.style.transform = `rotateY(${px*strength}deg) rotateX(${-py*strength}deg)`;
   });
-  el.addEventListener('mouseleave', ()=>{ el.style.transform='rotateY(0deg) rotateX(0deg)'; });
+  el.addEventListener('mouseleave', ()=>{
+      el.style.transform='rotateY(0deg) rotateX(0deg)';
+    if(el.id === 'photoCard') el.style.animationPlayState='running';
+  });
 }
 attachTilt(document.getElementById('photoCard'), 16);
 document.querySelectorAll('.project-card').forEach(c=>attachTilt(c, 8));
